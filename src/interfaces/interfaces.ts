@@ -24,8 +24,18 @@ export interface MovieDetails {
   release_date: string;
   runtime: number;
   vote_average: number;
+  credits: {
+    cast: CastMember[];
+  };
 }
 
 export interface MovieDetailsProps {
   id: string;
+}
+
+export interface CastMember {
+  id: number;
+  name: string;
+  character: string;
+  profile_path: string | null;
 }

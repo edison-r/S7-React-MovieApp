@@ -43,7 +43,7 @@ export default function MovieDetails({ id }: MovieDetailsProps) {
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
-      <div className="bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl overflow-hidden">
+      <div className="mb-8 bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl overflow-hidden">
         <div className="flex flex-col md:flex-row">
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -65,13 +65,28 @@ export default function MovieDetails({ id }: MovieDetailsProps) {
             )}
           </div>
         </div>
-
-        {/* Footer con rating */}
         <div className="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-between items-center">
           <p className="text-sm text-yellow-600 font-semibold">
             ⭐ {movie.vote_average.toFixed(1)} / 10
           </p>
         </div>
+      </div>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        {movie.credits.cast
+          .filter((actor) => actor.profile_path) // solo actores con imagen
+          .slice(0, 12)
+          .map((actor) => (
+            <div key={actor.id} className="text-center">
+              <img
+                src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+                alt={actor.name}
+                className="rounded-lg shadow-md mb-2"
+              />
+              <p className="text-sm font-semibold text-black">{actor.name}</p>
+              <p className="text-xs text-gray-500">{actor.character}</p>
+            </div>
+          ))}
       </div>
     </div>
   );
