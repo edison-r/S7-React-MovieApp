@@ -39,3 +39,18 @@ export interface CastMember {
   character: string;
   profile_path: string | null;
 }
+
+export interface CastDetails {
+  id: number;
+  name: string;
+  biography: string;
+  birthday: string;
+  place_of_birth: string;
+  profile_path: string;
+  known_for_department: string;
+}
+
+export interface CastModalProps {
+  actorId: number | null;
+  onClose: () => void;
+}
