@@ -20,17 +20,19 @@ export default function MovieCard({ movie }: Props) {
       }}
       transition={{ duration: 0.3 }}
     >
-      <img src={imgUrl} alt={movie.title} className="w-full object-cover" />
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileHover={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-        className="absolute inset-0 bg-black/20 flex items-center justify-center p-2"
-      >
-        <p className="text-white text-center font-bold text-sm sm:text-base">
-          {movie.title}
-        </p>
-      </motion.div>
+      <a href={`/movie/${movie.id}`}>
+        <img src={imgUrl} alt={movie.title} className="w-full object-cover" />
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="absolute inset-0 bg-black/20 flex items-center justify-center p-2"
+        >
+          <p className="text-white text-center font-bold text-sm sm:text-base">
+            {movie.title}
+          </p>
+        </motion.div>
+      </a>
     </motion.div>
   );
 }

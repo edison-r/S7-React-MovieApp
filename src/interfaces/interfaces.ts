@@ -15,3 +15,17 @@ export interface TMDBResponse {
 export interface MovieCardProps {
   movie: Movie;
 }
+
+export interface MovieDetails {
+  id: number;
+  title: string;
+  overview: string;
+  poster_path: string;
+  release_date: string;
+  runtime: number;
+  vote_average: number;
+}
+
+export interface MovieDetailsProps {
+  id: string;
+}
