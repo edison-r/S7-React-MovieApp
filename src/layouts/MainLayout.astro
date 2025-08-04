@@ -1,6 +1,6 @@
 ---
 // src/layouts/MainLayout.astro
-import Navbar from "../components/Navbar.astro";
+import Navbar from "../components/Navbar.tsx";
 
 const { title = "TMDB Movies" } = Astro.props;
 ---
@@ -12,7 +12,7 @@ const { title = "TMDB Movies" } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="bg-[#FAFAFA] min-h-screen">
-    <Navbar />
+    <Navbar client:load/>
     <main>
       <slot />
     </main>

@@ -1,0 +1,42 @@
+import { useEffect, useState } from "react";
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    
+    window.addEventListener("scroll", handleScroll);
+    
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <nav
+      className={`sticky w-full z-20 top-0 start-0 border-b border-gray-200 backdrop-blur-md transition-all duration-300
+        ${scrolled ? "bg-white/50 shadow-md" : "bg-white py-4 shadow-sm"}
+      `}
+    >
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center transition-all duration-300">
+        <a href="/" className="hover:opacity-50 transition-opacity duration-200">
+          <img
+            src="/icon.png"
+            className={`transition-all duration-300 ${scrolled ? "h-8" : "h-12"}`}
+            alt="Movies Logo"
+          />
+        </a>
+
+        <ul className="flex flex-row gap-8 text-black text-2xl font-semibold">
+          <a href="/"><li className="hover:opacity-50 transition-opacity duration-200">Home</li></a>
+          <a href="/"><li className="hover:opacity-50 transition-opacity duration-200">Movies</li></a>
+        </ul>
+
+        <div>
+          <button className="text-2xl font-bold text-black">
+            <span className="hover:opacity-50 transition-opacity duration-200">Log in</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+}
