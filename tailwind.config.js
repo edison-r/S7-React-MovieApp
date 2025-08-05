@@ -6,8 +6,14 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui"],
+        inter: ['"Inter"', "ui-sans-serif", "system-ui"],
+        bowlby: ['"Bowlby One"', 'cursive'],
+        allura: ['"Allura"', 'cursive'],
       },
+      fontSize: {
+        '10xl': '10rem',
+        '16xl': '16rem'
+      }
     },
   },
   plugins: [],
