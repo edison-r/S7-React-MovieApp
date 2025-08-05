@@ -45,7 +45,7 @@ export default function MovieDetails({ id }: MovieDetailsProps) {
     return (
         <div className="p-6 max-w-5xl mx-auto">
         {/* --- DETALLES DE LA PELI --- */}
-        <div className="mb-8 bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl overflow-hidden">
+        <div className="mb-8 bg-[#0A0A0A] backdrop-blur-lg rounded-2xl shadow-xl overflow-hidden">
             <div className="flex flex-col md:flex-row">
             <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -53,24 +53,22 @@ export default function MovieDetails({ id }: MovieDetailsProps) {
                 className="w-full md:w-1/3 object-cover shadow-lg md:rounded-2xl"
             />
             <div className="p-6 flex flex-col justify-center">
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 {movie.title}
                 </h1>
-                <p className="text-gray-700 mb-4 leading-relaxed">{movie.overview}</p>
+                <p className="text-gray-400 mb-4 leading-relaxed">{movie.overview}</p>
                 <p className="text-gray-500 text-sm mb-2">
                 Release date: <span className="font-medium">{movie.release_date}</span>
                 </p>
                 {movie.runtime && (
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-500 mb-4 text-sm">
                     Duration: <span className="font-medium">{movie.runtime} min</span>
                 </p>
                 )}
-            </div>
-            </div>
-            <div className="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-between items-center">
-            <p className="text-sm text-yellow-600 font-semibold">
+                <p className="text-sm text-yellow-600">
                 ⭐ {movie.vote_average.toFixed(1)} / 10
-            </p>
+                </p>
+            </div>
             </div>
         </div>
 
@@ -82,7 +80,7 @@ export default function MovieDetails({ id }: MovieDetailsProps) {
             .map((actor) => (
                 <div
                 key={actor.id}
-                className="text-center cursor-pointer hover:scale-105 transition"
+                className="text-center cursor-pointer hover:scale-105 transition duration-300"
                 onClick={() => setSelectedActorId(actor.id)}
                 >
                 <img
@@ -90,8 +88,8 @@ export default function MovieDetails({ id }: MovieDetailsProps) {
                     alt={actor.name}
                     className="rounded-lg shadow-md mb-2"
                 />
-                <p className="text-sm font-semibold text-black">{actor.name}</p>
-                <p className="text-xs text-gray-500">{actor.character}</p>
+                <p className="text-sm font-semibold text-white">{actor.name}</p>
+                <p className="text-sm text-gray-500">{actor.character}</p>
                 </div>
             ))}
         </div>

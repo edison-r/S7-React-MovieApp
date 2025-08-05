@@ -41,7 +41,7 @@ export default function ActorModal({ actorId, onClose }: CastModalProps) {
         onClick={onClose}
       >
         <motion.div
-          className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full overflow-hidden flex flex-col md:flex-row"
+          className="bg-[#0A0A0A] rounded-2xl shadow-2xl max-w-3xl w-full overflow-hidden flex flex-col md:flex-row"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.8, opacity: 0 }}
@@ -60,13 +60,13 @@ export default function ActorModal({ actorId, onClose }: CastModalProps) {
                 className="w-full md:w-1/3 object-cover"
               />
               <div className="flex-1 p-6 flex flex-col">
-                <h2 className="text-2xl font-bold text-gray-900">{actorDetails.name}</h2>
+                <h2 className="text-2xl font-bold text-white">{actorDetails.name}</h2>
                 <p className="text-sm text-gray-500 mb-2">
                   {actorDetails.known_for_department} •{" "}
                   {actorDetails.birthday || "Unknown"}{" "}
                   {actorDetails.place_of_birth && ` • ${actorDetails.place_of_birth}`}
                 </p>
-                <div className="mt-2 text-gray-700 text-sm overflow-y-auto max-h-64 leading-relaxed">
+                <div className="mt-2 text-gray-400 text-md overflow-y-auto max-h-64 leading-relaxed">
                   {actorDetails.biography || "No biography available."}
                 </div>
               </div>
