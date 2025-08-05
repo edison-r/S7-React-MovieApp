@@ -26,13 +26,13 @@ export default function Navbar() {
           />
         </a>
 
-        <ul className="flex flex-row gap-8 text-black text-2xl font-semibold">
+        <ul className={`flex flex-row gap-8 text-black transition-all duration-300 ${scrolled ? "text-xl font-semibold" : "text-2xl font-bold"}`}>
           <a href="/"><li className="hover:opacity-50 transition-opacity duration-200">Home</li></a>
           <a href="/"><li className="hover:opacity-50 transition-opacity duration-200">Movies</li></a>
         </ul>
 
         <div>
-          <button className="text-2xl font-bold text-black">
+          <button className={`text-black transition-all duration-300 ${scrolled ? "text-xl font-semibold" : "text-2xl font-bold"}`}>
             <span className="hover:opacity-50 transition-opacity duration-200">Log in</span>
           </button>
         </div>
