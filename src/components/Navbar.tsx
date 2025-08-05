@@ -18,7 +18,7 @@ export default function Navbar() {
       `}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center transition-all duration-300">
-        <a href="/" className="hover:opacity-50 transition-opacity duration-200">
+        <a href="/home" className="hover:opacity-50 transition-opacity duration-200">
           <img
             src="/whiteIcon.png"
             className={`transition-all duration-300 ${scrolled ? "h-8" : "h-12"}`}
@@ -27,7 +27,7 @@ export default function Navbar() {
         </a>
 
         <ul className={`flex flex-row gap-16 text-white transition-all duration-300 ${scrolled ? "text-xl font-extralight" : "text-2xl font-light"}`}>
-          <a href="/"><li className="hover:opacity-50 transition-opacity duration-200">Home</li></a>
+          <a href="/home"><li className="hover:opacity-50 transition-opacity duration-200">Home</li></a>
           <a href="/"><li className="hover:opacity-50 transition-opacity duration-200">Movies</li></a>
         </ul>
 
