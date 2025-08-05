@@ -1,0 +1,14 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import MovieDetails from "../../features/movies/components/MovieDetails";
+import "../../styles/global.css";
+
+export const prerender = false;
+
+const { id } = Astro.params;
+if (!id) throw new Error("Movie id param is required");
+---
+
+<MainLayout title="Movie Details">
+  <MovieDetails id={id} client:load />
+</MainLayout>

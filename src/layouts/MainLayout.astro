@@ -1,0 +1,20 @@
+---
+// src/layouts/MainLayout.astro
+import Navbar from "../components/Navbar.tsx";
+
+const { title = "TMDB Movies" } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-[#FAFAFA] min-h-screen">
+    <Navbar client:load/>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
