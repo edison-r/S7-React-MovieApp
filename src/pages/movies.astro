@@ -1,0 +1,9 @@
+---
+import "../styles/global.css";
+import MoviesGrid from "../features/movies/components/MoviesGrid";
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="TMDB Movies">
+  <MoviesGrid client:load />
+</MainLayout>
