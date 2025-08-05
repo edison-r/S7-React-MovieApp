@@ -1,15 +1,9 @@
 ---
 import "../styles/global.css";
 import MoviesGrid from "../features/movies/components/MoviesGrid";
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TMDB Movies</title>
-  </head>
-  <body class="bg-[#FAFAFA] text-white min-h-screen">
-    <MoviesGrid client:load />
-  </body>
-</html>
+<MainLayout title="TMDB Movies">
+  <MoviesGrid client:load />
+</MainLayout>
