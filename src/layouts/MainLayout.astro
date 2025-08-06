@@ -2,7 +2,7 @@
 // src/layouts/MainLayout.astro
 import Navbar from "../components/Navbar.tsx";
 
-const { title = "TMDB Movies" } = Astro.props;
+const { title = "TMDB Movies", bodyClass = "" } = Astro.props;
 ---
 <html lang="en">
   <head>
@@ -14,7 +14,7 @@ const { title = "TMDB Movies" } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Bowlby+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <title>{title}</title>
   </head>
-  <body class="bg-black min-h-screen">
+  <body class={`bg-black min-h-screen ${bodyClass}`}>
     <Navbar client:load/>
     <main>
       <slot />
