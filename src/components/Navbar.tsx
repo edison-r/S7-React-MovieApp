@@ -1,14 +1,32 @@
 import { useEffect, useState } from "react";
+import { supabase } from "../lib/supabaseClient";
+import UserMenu from "./UserMenu";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  // Scroll shrink effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
-    
     window.addEventListener("scroll", handleScroll);
-    
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Check session on mount
+  useEffect(() => {
+    const getSession = async () => {
+      const { data: { session }, } = await supabase.auth.getSession();
+      setIsLoggedIn(!!session);
+    };
+    getSession();
+
+    // Optional: add listener for session change
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsLoggedIn(!!session);
+    });
+
+    return () => listener?.subscription.unsubscribe();
   }, []);
 
   return (
@@ -27,14 +45,23 @@ export default function Navbar() {
         </a>
 
         <ul className={`flex flex-row gap-16 text-white transition-all duration-300 ${scrolled ? "text-xl font-extralight" : "text-2xl font-light"}`}>
-          <a href="/"><li className="hover:opacity-50 transition-opacity duration-200">Home</li></a>
-          <a href="/movies"><li className="hover:opacity-50 transition-opacity duration-200">Movies</li></a>
+          <a href="/"><li className="hover:text-red-500 transition duration-200">Home</li></a>
+          <a href="/movies"><li className="hover:text-red-500 transition duration-200">Movies</li></a>
         </ul>
 
         <div>
-          <button className={`text-white transition-all duration-300 ${scrolled ? "text-xl font-extralight" : "text-2xl font-light"}`}>
-            <span className="hover:opacity-50 transition-opacity duration-200">Log in</span>
-          </button>
+          {isLoggedIn
+            ? ( <UserMenu /> )
+            : (
+            <a 
+              href="/auth"
+              className={`text-white hover:text-red-500 transition-all duration-200 ${
+                scrolled ? "text-xl font-extralight" : "text-2xl font-light"
+              }`}
+            >
+            Log in
+            </a>
+          )}
         </div>
       </div>
     </nav>

@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         inter: ['"Inter"', "ui-sans-serif", "system-ui"],
-        bowlby: ['"Bowlby One"', 'cursive'],
+        Anton: ['"Anton"', 'cursive'],
         allura: ['"Allura"', 'cursive'],
       },
       fontSize: {
