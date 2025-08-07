@@ -33,7 +33,7 @@ export default function Home(){
             <section className="relative flex items-center justify-center w-full h-full">
 
                 <div className="relative text-center">
-                    <p className="font-bowlby text-[10vw] uppercase text-white/80 tracking-wider select-none leading-none">
+                    <p className="font-Anton text-[12vw] uppercase text-white/80 tracking-wider select-none leading-none">
                     Your Movies
                     </p>
                     <p className="font-allura text-[#F61308] text-[15vw] leading-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[-5deg]">

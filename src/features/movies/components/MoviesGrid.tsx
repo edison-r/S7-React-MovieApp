@@ -1,9 +1,12 @@
+import { useProtectedRoute } from "../../../hooks/useProtectedRoute";
 import { useInfiniteScroll } from "../../../hooks/useInfiniteScroll";
 import { getPopularMovies } from "../../../services/tmdb";
 import type { Movie } from "../../../interfaces/interfaces";
 import MovieCard from "./MovieCard";
 
 export default function MoviesGrid() {
+  useProtectedRoute();
+
   const { items: movies, loaderRef, loading } = useInfiniteScroll<Movie>(getPopularMovies);
 
   return (
