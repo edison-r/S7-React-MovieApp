@@ -39,7 +39,9 @@ export default function UserMenu() {
       >
         <span className="font-semibold">Log out</span>
       </button>
-      <p className="text-gray-600 mb-1">Logged in as: <span className="font-extralight">{userEmail}</span></p>
+      <p className="font-extralight text-gray-600 mb-1">
+        Hello!{" "} {userEmail?.split("@")[0]}
+      </p>
     </div>
   );
 }
