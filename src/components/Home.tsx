@@ -15,8 +15,6 @@ const images = [
   "/backgrounds/lalaland.jpg"
 ];
 
-
-
 export default function Home(){
     const [bgImage, setBgImage] = useState(images[Math.floor(Math.random() * images.length)]);
 
