@@ -46,7 +46,8 @@ export default function Navbar() {
 
         <ul className={`flex flex-row gap-16 text-white transition-all duration-300 ${scrolled ? "text-xl font-extralight" : "text-2xl font-light"}`}>
           <a href="/"><li className="hover:text-red-500 transition duration-200">Home</li></a>
-          <a href="/movies"><li className="hover:text-red-500 transition duration-200">Movies</li></a>
+          <a href="/movies"><li className="hover:text-red-500 transition duration-200">All Movies</li></a>
+          <a href="/moviesalt"><li className="hover:text-red-500 transition duration-200">Movies by theme</li></a>
         </ul>
 
         <div>

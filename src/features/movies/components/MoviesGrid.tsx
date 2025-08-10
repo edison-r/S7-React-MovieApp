@@ -11,7 +11,7 @@ export default function MoviesGrid() {
 
   return (
     <div className="p-6">
-      <h2 className="text-white text-7xl text-center font-extrabold mb-8">Popular Movies</h2>
+      <h2 className="text-white text-7xl text-center font-extrabold mb-8">All Movies</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
