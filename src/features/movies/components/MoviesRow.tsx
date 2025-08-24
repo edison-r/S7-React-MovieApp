@@ -1,3 +1,4 @@
+import { useProtectedRoute } from "../../../hooks/useProtectedRoute";
 import { useEffect, useRef, useState, useCallback } from "react";
 import type { Movie } from "../../../interfaces/interfaces";
 import MovieCard from "./MovieCard";
@@ -17,6 +18,8 @@ export default function MoviesRow({
   page = 1,
   limit = 20,
 }: MoviesRowProps) {
+  useProtectedRoute();
+
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
   const [canLeft, setCanLeft] = useState(false);
