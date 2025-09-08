@@ -8,3 +8,8 @@ export async function getPopularMovies(page = 1): Promise<Movie[]>{
     const data = await fetchData<TMDBResponse>(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`);
     return data.results;
 }
+
+export async function getTopRatedMovies(page = 1): Promise<Movie[]>{
+    const data = await fetchData<TMDBResponse>(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`);
+    return data.results;
+}

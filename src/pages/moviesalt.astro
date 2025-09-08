@@ -2,8 +2,11 @@
 import "../styles/global.css";
 import MainLayout from "../layouts/MainLayout.astro";
 import MoviesRow from "../features/movies/components/MoviesRow";
+import { getTopRatedMovies } from "../services/tmdb";
+
 ---
 
 <MainLayout title="Movies by theme">
-  <MoviesRow client:load />
+  <MoviesRow title="Popular" client:load />
+  <MoviesRow title="Top Rated" fetchFn={getTopRatedMovies} client:load />
 </MainLayout>

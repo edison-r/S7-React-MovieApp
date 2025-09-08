@@ -12,12 +12,7 @@ interface MoviesRowProps {
   limit?: number; // por si quieres menos/más de 20 (default 20)
 }
 
-export default function MoviesRow({
-  title = "Popular",
-  fetchFn = getPopularMovies,
-  page = 1,
-  limit = 20,
-}: MoviesRowProps) {
+export default function MoviesRow({ title = "", fetchFn = getPopularMovies, page = 1, limit = 20 }: MoviesRowProps) {
   useProtectedRoute();
 
   const [movies, setMovies] = useState<Movie[]>([]);
