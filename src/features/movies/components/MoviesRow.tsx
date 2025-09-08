@@ -2,11 +2,11 @@ import { useProtectedRoute } from "../../../hooks/useProtectedRoute";
 import { useEffect, useRef, useState, useCallback } from "react";
 import type { Movie } from "../../../interfaces/interfaces";
 import MovieCard from "./MovieCard";
-import { getPopularMovies, getTopRatedMovies } from "../../../services/tmdb";
+import { getPopularMovies, getTopRatedMovies, getNowInCinema } from "../../../services/tmdb";
 
 interface MoviesRowProps {
   title?: string;
-  type?: "popular" | "topRated";
+  type?: "popular" | "topRated" | "nowPlaying" | "upcoming" ;
   page?: number;
   limit?: number;
 }
@@ -19,7 +19,13 @@ export default function MoviesRow({ title = "", type = "popular", page = 1, limi
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(false);
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const fetchFn = type === "topRated" ? getTopRatedMovies : getPopularMovies;
+
+  const fetchFn =
+      type === "topRated"
+        ? getTopRatedMovies
+        : type === "nowPlaying"
+        ? getNowInCinema
+        : getPopularMovies;
 
   useEffect(() => {
     let ignore = false;

@@ -2,11 +2,11 @@
 import "../styles/global.css";
 import MainLayout from "../layouts/MainLayout.astro";
 import MoviesRow from "../features/movies/components/MoviesRow";
-import { getTopRatedMovies } from "../services/tmdb";
 
 ---
 
 <MainLayout title="Movies by theme">
   <MoviesRow title="Popular" type="popular" client:load />
   <MoviesRow title="Top Rated" type="topRated" client:load />
+  <MoviesRow title="Now in Cinemas" type="nowPlaying" client:load />
 </MainLayout>
