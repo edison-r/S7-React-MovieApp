@@ -2,17 +2,16 @@ import { useProtectedRoute } from "../../../hooks/useProtectedRoute";
 import { useEffect, useRef, useState, useCallback } from "react";
 import type { Movie } from "../../../interfaces/interfaces";
 import MovieCard from "./MovieCard";
-import { getPopularMovies } from "../../../services/tmdb";
+import { getPopularMovies, getTopRatedMovies } from "../../../services/tmdb";
 
 interface MoviesRowProps {
   title?: string;
-  /** Función de fetch. Por defecto, popular de TMDB (página 1). Debe devolver como mínimo 20. */
-  fetchFn?: (page?: number) => Promise<Movie[]>;
+  type?: "popular" | "topRated";
   page?: number;
-  limit?: number; // por si quieres menos/más de 20 (default 20)
+  limit?: number;
 }
 
-export default function MoviesRow({ title = "", fetchFn = getPopularMovies, page = 1, limit = 20 }: MoviesRowProps) {
+export default function MoviesRow({ title = "", type = "popular", page = 1, limit = 20 }: MoviesRowProps) {
   useProtectedRoute();
 
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -20,6 +19,7 @@ export default function MoviesRow({ title = "", fetchFn = getPopularMovies, page
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(false);
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const fetchFn = type === "topRated" ? getTopRatedMovies : getPopularMovies;
 
   useEffect(() => {
     let ignore = false;
@@ -29,7 +29,6 @@ export default function MoviesRow({ title = "", fetchFn = getPopularMovies, page
       if (!ignore) {
         setMovies(data.slice(0, limit));
         setLoading(false);
-        // evaluar flechas tras pintar
         requestAnimationFrame(updateArrows);
       }
     }
@@ -62,21 +61,9 @@ export default function MoviesRow({ title = "", fetchFn = getPopularMovies, page
     <section className="relative px-6 py-6">
       <div className="mb-3 flex items-end justify-between">
         <h2 className="text-white text-2xl sm:text-3xl font-bold">{title}</h2>
-        {/* Puedes añadir un CTA aquí si quieres */}
       </div>
 
       <div className="relative">
-        {/* Gradientes laterales (desaparecen cuando no hay más scroll) */}
-        <div
-          className={`pointer-events-none absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-[#0A0A0A] to-transparent transition-opacity ${canLeft ? "opacity-100" : "opacity-0"}`}
-          aria-hidden
-        />
-        <div
-          className={`pointer-events-none absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-[#0A0A0A] to-transparent transition-opacity ${canRight ? "opacity-100" : "opacity-0"}`}
-          aria-hidden
-        />
-
-        {/* Botones de scroll */}
         <button
           aria-label="Scroll left"
           onClick={() => scrollByAmount("left")}
@@ -94,7 +81,6 @@ export default function MoviesRow({ title = "", fetchFn = getPopularMovies, page
           ›
         </button>
 
-        {/* Carrusel horizontal */}
         <div
           ref={scrollerRef}
           onScroll={onScroll}

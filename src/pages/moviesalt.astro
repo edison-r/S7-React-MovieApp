@@ -7,6 +7,6 @@ import { getTopRatedMovies } from "../services/tmdb";
 ---
 
 <MainLayout title="Movies by theme">
-  <MoviesRow title="Popular" client:load />
-  <MoviesRow title="Top Rated" fetchFn={getTopRatedMovies} client:load />
+  <MoviesRow title="Popular" type="popular" client:load />
+  <MoviesRow title="Top Rated" type="topRated" client:load />
 </MainLayout>
