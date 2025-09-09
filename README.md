@@ -12,6 +12,8 @@ pass: `123456`
 
 ## Preview
 
+[![Demo Video](https://github.com/edison-r/S7-React-MovieApp/blob/main/demo_archives/yourmoviesapp_preview.jpg)]()
+
 ## Technologies used
 [![My Skills](https://skillicons.dev/icons?i=vite,html,css,tailwind,astro,ts,react,supabase,figma,vscode,git,github)](https://skillicons.dev)
 
